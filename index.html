@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🚦 Semáforo Inteligente - Dashboard</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="dashboard">
+        <!-- Header -->
+        <header class="header">
+            <h1 class="title">🚦 Semáforo Inteligente</h1>
+            <p class="subtitle">Monitoreo en Tiempo Real</p>
+            <div class="status-bar">
+                <span class="connection-status" id="connectionStatus">🔴 Desconectado</span>
+                <span class="last-update" id="lastUpdate">Última actualización: --</span>
+            </div>
+        </header>
+
+        <!-- Semáforo Principal -->
+        <section class="semaforo-section">
+            <div class="semaforo-container">
+                <div class="semaforo" id="semaforo">
+                    <div class="luz roja" id="luzRoja">
+                        <div class="reflejo"></div>
+                    </div>
+                    <div class="luz amarilla" id="luzAmarilla">
+                        <div class="reflejo"></div>
+                    </div>
+                    <div class="luz verde" id="luzVerde">
+                        <div class="reflejo"></div>
+                    </div>
+                </div>
+                <div class="estado-actual" id="estadoActual">
+                    <span class="estado-text">Esperando datos...</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Panel de Información -->
+        <section class="info-panel">
+            <div class="info-grid">
+                <div class="info-card">
+                    <h3>📊 Estado Actual</h3>
+                    <p id="estadoInfo">--</p>
+                </div>
+                <div class="info-card">
+                    <h3>⏰ Duración</h3>
+                    <p id="duracionInfo">--</p>
+                </div>
+                <div class="info-card">
+                    <h3>🔄 Ciclos</h3>
+                    <p id="ciclosInfo">--</p>
+                </div>
+                <div class="info-card">
+                    <h3>📍 Dispositivo</h3>
+                    <p id="dispositivoInfo">--</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Controles -->
+        <section class="controls-section">
+            <div class="controls-group">
+                <h3>🔧 Controles de Sistema</h3>
+                <div class="system-controls">
+                    <button class="btn btn-primary" onclick="SemaforoController.conectar()">
+                        🔗 Conectar Firebase
+                    </button>
+                    <button class="btn btn-secondary" onclick="SemaforoController.desconectar()">
+                        🔌 Desconectar
+                    </button>
+                    <button class="btn btn-info" onclick="SemaforoController.testLuces()">
+                        🧪 Test Luces
+                    </button>
+                </div>
+            </div>
+
+            <div class="controls-group">
+                <h3>🚦 Control Manual del Semáforo</h3>
+                <div class="semaforo-controls">
+                    <button class="btn btn-rojo" onclick="SemaforoController.cambiarColorManual('rojo')">
+                        🔴 Rojo
+                    </button>
+                    <button class="btn btn-amarillo" onclick="SemaforoController.cambiarColorManual('amarillo')">
+                        🟡 Amarillo
+                    </button>
+                    <button class="btn btn-verde" onclick="SemaforoController.cambiarColorManual('verde')">
+                        🟢 Verde
+                    </button>
+                    <button class="btn btn-detener" onclick="SemaforoController.detenerSemaforo()">
+                        ⏹️ Detener
+                    </button>
+                    <button class="btn btn-restablecer" onclick="SemaforoController.restablecerSemaforo()">
+                        🔄 Restablecer
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Log de Actividad -->
+        <section class="log-section">
+            <h3>📝 Log de Actividad</h3>
+            <div class="log-container" id="logContainer">
+                <div class="log-entry">Sistema iniciado...</div>
+            </div>
+            <button class="btn btn-small" onclick="LogManager.limpiar()">🗑️ Limpiar Log</button>
+        </section>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
